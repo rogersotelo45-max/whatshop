@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whatshop | Camina sin dolor todo el día</title>
+  <meta name="description"
+    content="Taloneras de gel, plantillas de silicona y accesorios ortopédicos premium. Envío GRATIS en Asunción y envíos rápidos a todo el Paraguay." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green: #1e9c1e;
+      --green-dark: #166e16;
+      --green-light: #e8f5e9;
+      --white: #ffffff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-600: #4b5563;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --green-wa: #25D366;
+      --green-wa-dark: #1ead53;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 12px 40px rgba(30, 156, 30, 0.22);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--gray-900);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── STICKY TOP BAR ── */
+    #announcement-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--green);
+      color: white;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    #announcement-bar span {
+      margin: 0 6px;
+    }
+
+    #announcement-bar::before {
+      content: "🚚 ";
+    }
+
+    /* ── NAV ── */
+    header {
+      position: fixed;
+      top: 40px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-cta {
+      background: var(--green);
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 9px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--green-dark);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 160px 24px 80px;
+      background: linear-gradient(160deg, #f0fff4 0%, #ffffff 60%);
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30, 156, 30, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+
+    #hero h1 {
+      font-size: clamp(36px, 8vw, 56px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--gray-900);
+      margin-bottom: 18px;
+    }
+
+    #hero h1 span {
+      color: var(--green);
+    }
+
+    #hero p {
+      font-size: 17px;
+      color: var(--gray-600);
+      max-width: 440px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: white;
+      font-size: 17px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      padding: 18px 36px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      animation: pulse 2.5s infinite;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(30, 156, 30, 0.32);
+      animation: none;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 12px 40px rgba(30, 156, 30, 0.22);
+      }
+
+      50% {
+        box-shadow: 0 12px 40px rgba(30, 156, 30, 0.42);
+      }
+    }
+
+    .cta-note {
+      font-size: 13px;
+      color: var(--gray-400);
+    }
+
+    .hero-img-wrap {
+      margin: 48px auto 0;
+      max-width: 360px;
+      position: relative;
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.14);
+    }
+
+    .floating-badge {
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-800);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .floating-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      display: inline-block;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.3
+      }
+    }
+
+    /* ── BENEFITS ── */
+    #benefits {
+      padding: 96px 24px;
+      background: var(--white);
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--gray-900);
+      margin-bottom: 48px;
+      line-height: 1.2;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: var(--gray-50);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      border: 1px solid var(--gray-200);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .benefit-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--green-light);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 18px;
+    }
+
+    .benefit-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--gray-900);
+    }
+
+    .benefit-card p {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.5;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    #reviews {
+      padding: 80px 0;
+      background: var(--gray-50);
+      overflow: hidden;
+    }
+
+    #reviews .section-label,
+    #reviews .section-title {
+      padding: 0 24px;
+    }
+
+    .reviews-track-wrap {
+      overflow: hidden;
+    }
+
+    .reviews-track {
+      display: flex;
+      gap: 16px;
+      padding: 8px 24px 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .reviews-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .review-card {
+      min-width: 280px;
+      max-width: 280px;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+    }
+
+    .review-stars {
+      color: #f59e0b;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .review-text {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .review-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: white;
+    }
+
+    .review-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+
+    .review-loc {
+      font-size: 12px;
+      color: var(--gray-400);
+    }
+
+    .verified {
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ── PRODUCTS ── */
+    #products {
+      padding: 80px 24px;
+      background: var(--white);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-img {
+      background: var(--gray-50);
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product-tag {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-bottom: 8px;
+    }
+
+    .product-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 6px;
+    }
+
+    .product-desc {
+      font-size: 13px;
+      color: var(--gray-600);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .product-price {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+
+    .product-price span {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray-400);
+      text-decoration: line-through;
+      margin-left: 6px;
+    }
+
+    .btn-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--green-wa);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      padding: 13px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-wa:hover {
+      background: var(--green-wa-dark);
+      transform: scale(1.02);
+    }
+
+    .btn-wa svg {
+      width: 18px;
+      height: 18px;
+      fill: white;
+      flex-shrink: 0;
+    }
+
+    /* ── BOTTOM CTA ── */
+    #bottom-cta {
+      padding: 80px 24px;
+      background: linear-gradient(135deg, #1e9c1e 0%, #166e16 100%);
+      text-align: center;
+      color: white;
+    }
+
+    #bottom-cta h2 {
+      font-size: clamp(28px, 6vw, 42px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+
+    #bottom-cta p {
+      font-size: 16px;
+      opacity: 0.85;
+      margin-bottom: 32px;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      color: var(--green);
+      font-size: 17px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      padding: 18px 38px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gray-900);
+      color: white;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      margin-bottom: 16px;
+    }
+
+    .footer-logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    .footer-sub {
+      font-size: 13px;
+      color: var(--gray-400);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .footer-partner {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--gray-400);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 16px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+      font-size: 12px;
+      color: var(--gray-600);
+    }
+
+    /* ── SCROLL FADE-IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── WHATSAPP FLOATING BUTTON ── */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: var(--green-wa);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      animation: wa-bounce 2s infinite;
+    }
+
+    .wa-float svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+    }
+
+    @keyframes wa-bounce {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-6px)
+      }
+    }
+
+    @media (min-width: 768px) {
+      #hero {
+        padding: 180px 48px 100px;
+      }
+
+      .cta-group {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .hero-img-wrap {
+        max-width: 480px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sticky Announcement Bar -->
+  <div id="announcement-bar">
+    <span>Envío GRATIS en Asunción</span>🎁<span>Envíos rápidos a todo Paraguay</span>
+  </div>
+
+  <!-- Navigation -->
+  <header>
+    <div class="logo"><img src="img/logo_whatshop.png" alt="Whatshop" /></div>
+    <a class="nav-cta"
+      href="https://wa.me/595991287881?text=Hola%20Whatshop%2C%20me%20interesa%20ver%20sus%20productos..."
+      target="_blank" rel="noopener">Comprar ahora</a>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-badge">✦ Especialistas en bienestar postural</div>
+    <h1>Camina sin dolor<br /><span>todo el día.</span></h1>
+    <p>Envío <strong>GRATUITO</strong> en Asunción y envíos rápidos a todo el Paraguay. Productos de calidad premium
+      para tu comodidad.</p>
+    <div class="cta-group">
+      <a class="btn-primary"
+        href="https://wa.me/595991287881?text=Hola%20Whatshop%2C%20quiero%20ver%20los%20productos..." target="_blank"
+        rel="noopener">
+        💬 Quiero comprar ahora
+      </a>
+    </div>
+    <p class="cta-note" style="margin-top:14px;">Sin tarjeta de crédito · Envío gratis en Asunción</p>
+    <div class="hero-img-wrap">
+      <img src="img/talonera_3.jpg" alt="Talonera de Gel Confort Whatshop" />
+      <div class="floating-badge">
+        <span class="dot"></span> +2,300 clientes satisfechos
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section id="benefits" class="fade-in">
+    <p class="section-label">¿Por qué Whatshop?</p>
+    <h2 class="section-title">Diseñado para tu bienestar</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Alivio Inmediato</h3>
+        <p>Siente la diferencia desde el primer paso. Diseño ergonómico que distribuye el peso de forma uniforme.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💎</div>
+        <h3>Silicona Premium</h3>
+        <p>Material médico de primera calidad. Hipoalérgico, duradero y certificado para uso prolongado.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🎯</div>
+        <h3>Ajuste Universal</h3>
+        <p>Compatible con cualquier tipo de calzado. Se adapta a tu pie perfectamente sin cortes ni ajustes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section id="reviews" class="fade-in">
+    <p class="section-label">Testimonios</p>
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <div class="reviews-track-wrap">
+      <div class="reviews-track">
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Increíble diferencia desde el primer día. Trabajo de pie 8 horas y antes terminaba con
+            dolores terribles. Ahora llego a casa sin molestias."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #1e9c1e;">MB</div>
+            <div>
+              <div class="review-name">María B.</div>
+              <div class="review-loc">Asunción, Paraguay</div>
+              <div class="verified">✔ Compra verificada</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Las taloneras son exactamente lo que necesitaba para mi fascitis plantar. Una semana y
+            ya noto la diferencia. Lo recomiendo 100%."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #7c3aed;">CR</div>
+            <div>
+              <div class="review-name">Carlos R.</div>
+              <div class="review-loc">San Lorenzo, Paraguay</div>
+              <div class="verified">✔ Compra verificada</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"El envío llegó rapidísimo, en menos de 2 horas en Asunción. El producto es de calidad
+            excelente, mucho mejor de lo esperado."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #059669;">AG</div>
+            <div>
+              <div class="review-name">Ana G.</div>
+              <div class="review-loc">Luque, Paraguay</div>
+              <div class="verified">✔ Compra verificada</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Tenía mucho escepticismo, pero las plantillas realmente funcionan. Mi médico quedó
+            sorprendido con la mejoría en mis pies planos."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #dc2626;">LP</div>
+            <div>
+              <div class="review-name">Luis P.</div>
+              <div class="review-loc">Lambaré, Paraguay</div>
+              <div class="verified">✔ Compra verificada</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"La atención por WhatsApp fue excelente. Me asesoraron perfectamente para elegir el
+            producto correcto para mi problema de postura."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #d97706;">SR</div>
+            <div>
+              <div class="review-name">Sofía R.</div>
+              <div class="review-loc">Fernando de la Mora</div>
+              <div class="verified">✔ Compra verificada</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog -->
+  <section id="products" class="fade-in">
+    <p class="section-label">Catálogo</p>
+    <h2 class="section-title">Nuestros productos estrella</h2>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-img"><img src="img/talonera_clean.jpg" alt="Talonera de Gel Confort" /></div>
+        <div class="product-info">
+          <span class="product-tag">Más vendido</span>
+          <div class="product-name">Talonera de Gel Confort</div>
+          <div class="product-desc">Alivio inmediato para el dolor de talón. Silicona médica, absorbe el impacto en cada
+            paso.</div>
+          <div class="product-price">₲ 85.000 <span>₲ 120.000</span></div>
+          <a class="btn-wa"
+            href="https://wa.me/595991287881?text=Hola%20Whatshop%2C%20quiero%20comprar%20la%20Talonera%20de%20Gel%20Confort"
+            target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            Comprar por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img"><img src="img/plantilla_2.jpg" alt="Plantilla de Gel de Silicona" /></div>
+        <div class="product-info">
+          <span class="product-tag">Premium</span>
+          <div class="product-name">Plantilla de Gel de Silicona</div>
+          <div class="product-desc">Alivio y confort total para tus pies. Absorbe el impacto, reduce el dolor y
+            amortigua cada paso.</div>
+          <div class="product-price">₲ 95.000 <span>₲ 140.000</span></div>
+          <a class="btn-wa"
+            href="https://wa.me/595991287881?text=Hola%20Whatshop%2C%20quiero%20comprar%20la%20Plantilla%20de%20Gel%20de%20Silicona"
+            target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            Comprar por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img"><img src="img/smiling_foot_box.png" alt="Calcetín de Silicona Smiling Foot" /></div>
+        <div class="product-info">
+          <span class="product-tag">Nuevo</span>
+          <div class="product-name">Calcetín de Silicona Smiling Foot</div>
+          <div class="product-desc">Hidrata, protege y alivia el dolor de pies. Con aceite de aloe, oliva y vitamina E.
+            Silicona suave.</div>
+          <div class="product-price">₲ 75.000 <span>₲ 110.000</span></div>
+          <a class="btn-wa"
+            href="https://wa.me/595991287881?text=Hola%20Whatshop%2C%20quiero%20comprar%20el%20Calcetin%20de%20Silicona%20Smiling%20Foot"
+            target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            Comprar por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img"><img src="img/smiling_foot_use.jpg" alt="Calcetín Smiling Foot en uso" /></div>
+        <div class="product-info">
+          <span class="product-tag">Best seller</span>
+          <div class="product-name">Smiling Foot — Uso Diario</div>
+          <div class="product-desc">Protección completa del pie con silicona antibacteriana. Ideal para pies secos y
+            talones agrietados.</div>
+          <div class="product-price">₲ 75.000 <span>₲ 110.000</span></div>
+          <a class="btn-wa"
+            href="https://wa.me/595991287881?text=Hola%20Whatshop%2C%20quiero%20comprar%20el%20Smiling%20Foot%20Uso%20Diario"
+            target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            Comprar por WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section id="bottom-cta" class="fade-in">
+    <h2>¿Listo para dar el primer paso?</h2>
+    <p>Escríbenos por WhatsApp y te asesoramos sin compromiso. Envío gratis en Asunción hoy mismo.</p>
+    <a class="btn-white"
+      href="https://wa.me/595991287881?text=Hola%20Whatshop%2C%20me%20interesa%20mejorar%20mi%20comodidad..."
+      target="_blank" rel="noopener">
+      💬 Hablar con un especialista
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">
+      <img src="img/logo_whatshop.png" alt="Whatshop" />
+    </div>
+    <p class="footer-sub">
+      Especialistas en bienestar postural y comodidad.<br />
+      Asunción, Paraguay · Envíos a todo el país.
+    </p>
+    <div class="footer-partner">
+      🤝 Logística en alianza con <strong style="color:white; margin-left:4px;">Óptica Proland</strong>
+    </div>
+    <p class="footer-bottom">© 2025 Whatshop · Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a class="wa-float"
+    href="https://wa.me/595991287881?text=Hola%20Whatshop%2C%20me%20interesa%20ver%20sus%20productos..." target="_blank"
+    rel="noopener" title="Chatear en WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+  </a>
+
+  <script>
+    // Scroll fade-in observer
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    faders.forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
